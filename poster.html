@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<title>poster.knit</title>
+
+<script src="poster_files/header-attrs-2.11/header-attrs.js"></script>
+
+
+
+
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Rasa' rel='stylesheet'>
+
+<!--
+Here are the required style attributes for css to make this poster work :)
+-->
+<style>
+@page {
+size: 46in 32in;
+margin: 0;
+padding: 0;
+background-color: #ffffff;
+}
+body {
+margin: 0px;
+padding: 0px;
+width: 46in;
+height: 32in;
+text-align: justify;
+font-size: 45px;
+background-color: #FFFFFF;
+color: #000000;
+}
+/* RMarkdown Class Styles */
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r {
+background-color: #dddddd40;
+border-radius: 4mm;
+padding: 4mm;
+width: 75%;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+code.sourceCode.r{
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #6e000024;
+color: #800000;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+caption {
+margin-bottom: 10px;
+font-size: 20pt;
+font-style: italic;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #80000020;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+  border-spacing: 0;
+  font-size: 40%;
+  border-style: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 1em;
+  padding-left: 1em;
+  line-height: 1em;
+}
+table {
+  margin: auto;
+}
+th {
+  padding-left: 5mm;
+  padding-right: 5mm;
+}
+.caption {
+font-size: 20pt;
+font-style: italic;
+padding-top: 0;
+}
+.references {
+font-size: 20px;
+line-height: 90%;
+}
+/* Create three unequal columns that floats next to each other */
+.column {
+float: left;
+padding: 0px;
+}
+.outer {
+width: 46in;
+height: 32in;
+-webkit-column-count: 2; /* Chrome, Safari, Opera */
+-moz-column-count: 2; /* Firefox */
+column-count: 2;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+-webkit-column-rule-width: 50%;
+-moz-column-rule-width: 50%;
+column-rule-width: 50%;
+-webkit-column-rule-style: solid;
+-moz-column-rule-style: solid;
+column-rule-style: solid;
+-webkit-column-rule-color: black;
+-moz-column-rule-color: black;
+column-rule-color: black;
+-webkit-column-gap: 50%;
+background-color: #ffffff;
+font-family: Rasa;
+color: #000000;
+}
+span.citation {
+  color: #6e0000;
+  font-weight: bold;
+}
+a {
+text-decoration: none;
+color: #6e0000;
+}
+#title {
+font-size: 125pt;
+text-align: left;
+margin: 0;
+line-height: 90%;
+border-bottom: 0;
+}
+#author {
+color: #800000;
+margin: 0;
+line-height: 90%;
+font-size: 1.17em;
+}
+#affiliation {
+padding-top: 1em;
+color: #00000060;
+font-style: italic;
+font-size: 25px;
+margin: 0;
+}
+sup {
+color: #cc0000;
+}
+.affiliation sup {
+font-size: 20px;
+}
+.author sup {
+font-size: 30px;
+}
+.author_extra {
+color: #6e0000;
+margin: 0;
+line-height: 85%;
+font-size: 35px;
+}
+.outer h1 {
+text-align: center;
+margin-top: 0.5in;
+margin-bottom: 0.5in;
+}
+.outer h2 {
+text-align: center;
+}
+.outer p {
+color: #000000;
+}
+.outer ol {
+text-align: left;
+}
+.main {
+width: calc(46in / 2);
+height: 32in;
+position: absolute;
+margin-left: calc(46in / 4);
+background-color: #800000;
+color: #FFFFFFAA;
+font-family: Rasa;
+background-image: linear-gradient(#800000 50%, #6e0000);
+}
+.main strong {
+color: #FFFFFF;
+}
+img.main-img-left {
+width: 20%;
+left: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+img.main-img-right {
+width: 18%;
+right: 0.5in;
+bottom: 0.2in;
+position: absolute;
+}
+.main p {
+padding-top: 20%;
+font-size: 170px;
+text-align: left;
+}
+.fab {
+color: #00000060;
+font-size: 25px;
+}
+.twitter, i {
+color: #00000060;
+font-size: 35px;
+text-decoration: none;
+}
+a.email {
+text-decoration: none;
+color: #00000060;
+font-size: 35px;
+}
+.envelope {
+color: #00000060;
+font-size: 5px;
+text-decoration: none;
+}
+.poster_wrap {
+width: 46in;
+height: 32in;
+padding: 0cm;
+background-color: #ffffff;
+}
+span > #tab:mytable {
+  font-weight: bold;
+}
+.section {
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+.main p {
+  padding-left: 30mm;
+  padding-right: 30mm;
+}
+.main_pic {
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.orcid img {
+  width: 3%;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+<div class="column outer">
+<br>
+<div class="title section">
+<h3 id="author" class="author">
+
+Michael J Mahoney<sup> 1, <a class="orcid" href="https://orcid.org/0000-0003-2402-304X"><img src="https://raw.githubusercontent.com/brentthorne/posterdown/master/images/orcid.jpg"></a></sup><br>
+<a class="twitter" href="https://mobile.twitter.com/mikemahoney218"><i class="fab fa-twitter"></i>&nbsp;&nbsp;@mikemahoney218</a><br>
+
+<a class='envelope'><i class="fas fa-envelope"></i></a> <a href="mailto:mjmahone@esf.edu" class="email">mjmahone@esf.edu</a> <br>
+   </h3>
+
+<h5 id="author_extra" class="author_extra">
+ Lucas K Johnson<sup>1, <a class="orcid" href="https://orcid.org/0000-0002-7953-0260"><img src="https://raw.githubusercontent.com/brentthorne/posterdown/master/images/orcid.jpg"></a></sup>
+ Eddie Bevilacqua<sup>2, <a class="orcid" href="https://orcid.org/0000-0003-0194-0531"><img src="https://raw.githubusercontent.com/brentthorne/posterdown/master/images/orcid.jpg"></a></sup>
+ Colin M Beier<sup>2, <a class="orcid" href="https://orcid.org/0000-0003-2692-7296"><img src="https://raw.githubusercontent.com/brentthorne/posterdown/master/images/orcid.jpg"></a></sup>
+</h5>
+
+<p id="affiliation" class="affiliation">
+<sup>1</sup> Graduate Program in Environmental Science, State University of New York College of Environmental Science and Forestry (SUNY-ESF)<br> <sup>2</sup> Department of Sustainable Resources Management, SUNY-ESF
+</p>
+
+</div>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>Airborne LiDAR has become an essential data source for large-scale modeling of
+forest aboveground biomass, enabling predictions with higher resolution and
+accuracy than can be achieved using optical imagery alone.
+Ground noise filtering – that is, excluding returns from LiDAR point clouds
+based on height thresholds – is a common practice meant to improve the ‘signal’
+content of LiDAR returns by preventing ground returns from masking useful
+information about tree size and condition contained within canopy returns.</p>
+<p>Originating from LiDAR-based estimation of mean tree and
+canopy height (Næsset, 1997), ground noise filtering has remained prevalent in
+LiDAR pre-processing across domains, including aboveground biomass estimation.
+In this new domain, ground returns may actually provide useful
+information about stand density and openness. In particular, ground returns
+may be helpful for making accurate biomass predictions in heterogeneous
+landscapes that include a patchy mosaic of vegetation heights and land cover
+types.</p>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p>We applied several height thresholds (no filtering, filtering points classified
+as “ground”, and filtering all points below 0.1, 1, and 2 meters above ground)
+to leaf-off LiDAR data flown for two regions within New York State (USA).
+The first area represents the majority of New York’s Cayuga and Oswego counties,
+a mixed agricultural and developed landscape with a large amount of marginal
+forestland with fragmented tree cover. The second area covers the northern
+sections of Warren and Washington counties and the southern section of Essex
+county, a predominantly forested region largely within New York’s Adirondack
+Park.</p>
+<p>We fit random forests to predict forest aboveground biomass calculated
+from FIA plot measurements, using metrics derived from the filtered LiDAR data
+sets as predictors. Separate models were fit to each region, as well as to a
+combined data set. Model accuracy was assessed against a hold-out set made from
+30% of available FIA plots.</p>
+<p><br /></p>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p>Predictors derived from filtered LiDAR had lower variance across plots and higher
+correlations between predictors. This combination results in lower amounts of
+information available to each model.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:dists"></span>
+<img src="dists.svg" alt="Distributions of common LiDAR-derived metrics (including density percentiles, decile heights, L-moments (from Hosking, 1990), and quadratic mean height) for the pooled dataset at various levels of ground noise filtering. Filtering reduces the variance in many metrics, reducing the total amount of information available to models." width="100%" />
+<p class="caption">
+Figure 1: Distributions of common LiDAR-derived metrics (including density percentiles, decile heights, L-moments (from Hosking, 1990), and quadratic mean height) for the pooled dataset at various levels of ground noise filtering. Filtering reduces the variance in many metrics, reducing the total amount of information available to models.
+</p>
+</div>
+<p>Perhaps as a result, models consistently performed better when using predictors
+derived from less-filtered data sets. This trend was most noticeable in the
+mixed-use landscape, likely due to the higher proportion of near-ground returns
+in the region.</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:deltas"></span>
+<img src="deltas.svg" alt="Height threshold-based filtering of LiDAR returns produces inferior models across all landscape types, with more notable impacts in mixed-use landscapes" width="100%" />
+<p class="caption">
+Figure 2: Height threshold-based filtering of LiDAR returns produces inferior models across all landscape types, with more notable impacts in mixed-use landscapes
+</p>
+</div>
+<p>Although well-justified in its original context of modeling mean stand
+heights, ground noise filtering for LiDAR-based AGB modeling
+appears to produce less accurate predictions than could be achieved using
+currently available data.</p>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
+<p style="font-size:80%;">
+Hosking, J. R. M. (1990). <em>J R Stat Soc Series B Stat Methodol</em> 52: 105-124.<br />
+Næsset, E. (1997). <em>ISPRS J. Photogramm. Remote Sens</em> 52: 49-56.
+</p>
+</div>
+
+</div>
+<div class="main">
+<p><strong>Filtering ground noise</strong> from LiDAR returns <strong>produces inferior models</strong> of forest aboveground biomass, particularly <strong>in mixed-used landscapes</strong>.</p>
+<img src="qr.png" class="main-img-left" />
+<img src="http://cafri-ny.org/wp-content/uploads/2020/02/withBackground-2048x967.jpg" class="main-img-right" />
+</div>
+</div>
+
+
+
+</body>
+</html>
