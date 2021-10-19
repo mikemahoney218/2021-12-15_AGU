@@ -28,7 +28,7 @@ main_findings:
   - "**Filtering ground noise** from LiDAR returns **produces inferior models** of forest aboveground biomass, particularly **in mixed-used landscapes**."
 #  - '![](deltas.svg){.main_pic}'
 logoleft_name: '![](qr.png){.main-img-left}'
-logoright_name: '![](http://cafri-ny.org/wp-content/uploads/2020/02/withBackground-2048x967.jpg){.main-img-right}'
+logoright_name: '![](logo.png){.main-img-right}'
 main_fontfamily: 'Rasa'
 main_textcol: "#FFFFFFAA"
 primary_colour: "#800000"
